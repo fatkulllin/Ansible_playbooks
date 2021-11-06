@@ -1,0 +1,14 @@
+---
+- name: My Super Playbook
+  hosts: all
+  become: yes
+
+  vars:
+   mytext: "Privet ot ADV-IT"
+
+  tasks:
+  - name: Ping Test
+    ping:
+
+  - include: create_folders.yml
+  - include: create_files.yml mytext="Hello from Vancuver"

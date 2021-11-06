@@ -1,0 +1,22 @@
+---
+- name: 11
+  hosts: all
+  become: yes
+
+
+  tasks:
+  - name: Tasks Number 1
+    apt: name=treeeee state=latest
+    ignore_errors: yes
+
+  - name: Task Number 2
+    shell: echo HelloWorld!
+    register: results
+    failed_when: results.rc != 0
+#    failed_when: "'World' in results.stdout"
+
+  - debug:
+     var: results
+
+  - name: Task Number 3
+    shell: echo PrivetMir!
